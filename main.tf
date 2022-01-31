@@ -17,3 +17,11 @@ resource "linode_lke_cluster" "cluster" {
         }
     }
 }
+
+resource "local_file" "kube_config" {
+  content         = base64decode(linode_lke_cluster.cluster.kubeconfig)
+  filename        = local.kube_config_filename
+  file_permission = "0660"
+
+  depends_on      = [linode_lke_cluster.cluster]
+}

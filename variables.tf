@@ -43,3 +43,9 @@ variable "autoscaler_settings_max" {
     type = number
     default = null
 }
+
+variable "kube_config_filename" {
+    description = "(Optional) The name to use for the kubeconfig file when exporting locally."
+    type = string
+    default = null
+}
